@@ -15,6 +15,8 @@ module Searchjoy
             "All Indices"
           end
 
+        recent_same_search = Searchjoy::Search.where(user_id: attributes[:user_id], pharmacy_id: attributes[:pharmacy_id]).where("created_at < ?", 5.minutes.ago)
+        return if recent_same_search.any?
         results.search = Searchjoy::Search.create({search_type: search_type, query: term, results_count: results.total_count}.merge(attributes))
       end
 
