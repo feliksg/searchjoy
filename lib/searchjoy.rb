@@ -1,6 +1,4 @@
 require "active_record"
-require "chartkick"
-require "groupdate"
 
 require "searchjoy/track"
 require "searchjoy/engine" if defined?(Rails)
